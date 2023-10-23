@@ -1,6 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
-import Header from "./components/Header/Header";
+// import Header from "./components/Header/Header";
 import Navbar from "./components/Navbar/Navbar";
 import {BrowserRouter, Route, Router, Routes} from "react-router-dom";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
@@ -14,8 +14,7 @@ const App = () => {
     return (
         // <BrowserRouter> Убрал специально!!! Дублирует Арр в Index.js
         <div className='app-wrapper'>
-            {/*<HeaderContainer />*/}
-            <Header />
+            <HeaderContainer />
             <Navbar />
             <div className='app-wrapper-content'>
                 <Routes>
