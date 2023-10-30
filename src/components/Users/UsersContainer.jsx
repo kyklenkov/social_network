@@ -53,8 +53,8 @@ class UsersContainer extends React.Component {
                         users={this.props.users}
                         follow={this.props.follow}
                         unfollow={this.props.unfollow}
-                        // toggleFollowingProgress={this.props.toggleFollowingProgress}
-                        // followingProgress={this.props.followingInProgress}
+                        toggleFollowingProgress={this.props.toggleFollowingProgress}
+                        followingProgress={this.props.followingInProgress}
             />
         </>
     }
@@ -67,7 +67,7 @@ let mapStateToProps = (state) => {
         totalUsersCount: state.usersPage.totalUsersCount, // /100 ЗАГЛУШКА ЧТОБЫ СЕРВЕР САЙТ НЕ ВИС
         currentPage: state.usersPage.currentPage,
         isFetching: state.usersPage.isFetching,
-        // followingInProgress: state.usersPage.followingInProgress
+        followingInProgress: state.usersPage.followingInProgress
     }
 }
 
@@ -106,8 +106,10 @@ let mapStateToProps = (state) => {
     getUsers})(UsersAPIComponent));*/
 
 export default connect(mapStateToProps,
-    {follow, unfollow, setUsers, setCurrentPage, setTotalUsersCount, toggleIsFetching, /*toggleFollowingProgress*/})
-(UsersContainer);
+    {follow, unfollow,
+                    setUsers, setCurrentPage,
+                    setTotalUsersCount, toggleIsFetching,
+                    toggleFollowingProgress})(UsersContainer);
 
 /*
 export default connect(mapStateToProps, {
