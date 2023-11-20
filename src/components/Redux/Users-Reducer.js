@@ -70,29 +70,30 @@ const usersReducer = (state = initialState, action) => {
     }
 }
 
-export const follow = (userID) => ({type: FOLLOW, userID})
-export const unfollow = (userID) => ({type: UNFOLLOW, userID})
+export const followSucces = (userID) => ({type: FOLLOW, userID})
+export const unfollowSucces = (userID) => ({type: UNFOLLOW, userID})
 export const setUsers = (users) => ({type: SET_USERS, users})
 export const setCurrentPage = (currentPage) => ({type: SET_CURRENT_PAGE, currentPage })
 export const setTotalUsersCount = (totalUsersCount) => ({type: SET_TOTAL_USERS_COUNT, count: totalUsersCount })
 export const toggleIsFetching = (isFetching) => ({type: TOGGLE_IS_FETCHING, isFetching })
 export const toggleFollowingProgress = (isFetching, userId) => ({type: TOGGLE_IS_FOLLOWING_PROGRESS, isFetching, userId })
 
-/*export const getUsers = (currentPage, pageSize) => {
+export const getUsers = (currentPage, pageSize) => {
     return (dispatch) => {
-        dispatch(setToggleIsFetching(true));
+
+        dispatch(toggleIsFetching(true));
 
         usersAPI.getUsers(currentPage, pageSize)
-
             .then(data => {
-                dispatch(setToggleIsFetching(false));
+                dispatch(toggleIsFetching(false));
                 dispatch(setUsers(data.items));
                 dispatch(setTotalUsersCount(data.totalCount));
             });
     }
-}*/
+}
 
-/*export const follow = (userId) => {
+export const follow = (userId) => {
+
     return (dispatch) => {
         dispatch(toggleFollowingProgress(true, userId));
         usersAPI.follow(userId)
@@ -103,9 +104,9 @@ export const toggleFollowingProgress = (isFetching, userId) => ({type: TOGGLE_IS
                 dispatch(toggleFollowingProgress(false, userId));
             });
     }
-}*/
+}
 
-/*export const unfollow = (userId) => {
+export const unfollow = (userId) => {
     return (dispatch) => {
         dispatch(toggleFollowingProgress(true, userId));
         usersAPI.unfollow(userId)
@@ -116,7 +117,7 @@ export const toggleFollowingProgress = (isFetching, userId) => ({type: TOGGLE_IS
                 dispatch(toggleFollowingProgress(false, userId));
             });
     }
-}*/
+}
 
 
 export default usersReducer;
