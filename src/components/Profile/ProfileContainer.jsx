@@ -16,6 +16,8 @@ function ProfileContainer(props) {
         props.getUserProfile(userId);
     }, [userId]);
 
+    if (!props.isAuth) return <Navigate to={'/login'} />;
+
     return (
         <div>
             <Profile profile={props.profile} />
@@ -24,7 +26,8 @@ function ProfileContainer(props) {
 }
 
 let mapStateToProps = (state) => ({
-    profile: state.profilePage.profile
+    profile: state.profilePage.profile,
+    isAuth: state.auth.isAuth
 })
 
 export default connect(mapStateToProps, {getUserProfile})(ProfileContainer);

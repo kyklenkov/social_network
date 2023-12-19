@@ -2,8 +2,7 @@ import React from "react";
 import s from './Dialogs.module.css';
 import DialogItem from "./DialogItem/DialogsItem";
 import Message from "./Message/Message.jsx";
-import {sendMessageCreator, updateNewMessageBodyCreator} from "../Redux/Dialog-Reducer";
-import {Navigate} from 'react-router-dom';
+import {Navigate} from "react-router-dom";
 
 const Dialogs = (props) => {
 
@@ -14,16 +13,14 @@ const Dialogs = (props) => {
     let newMessageBody = state.newMessageBody;
 
     let onSendMessageClick = () => {
-        // props.store.dispatch(sendMessageCreator());
         props.sendMessage();
     }
     let onNewMessageChange = (e) => {
         let body = e.target.value;
         props.updateNewMessageBody(body)
-        // props.store.dispatch(updateNewMessageBodyCreator(body));
     }
 
-    // if (!props.isAuth) return <Navigate to={'/login'} />;
+    if (!props.isAuth) return <Navigate to={'/login'} />;
 
     return (
         <div className={s.dialogs}>

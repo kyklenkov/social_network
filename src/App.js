@@ -27,29 +27,13 @@ const App = () => {
                     <Route path='/users'
                            element={<UsersContainer />}/>
 
-                    {/*<Route path='/login'
-                           element={<Login />}/>*/}
+                    <Route path='/login'
+                           element={<Login />}/>
                 </Routes>
             </div>
         </div>
         // </BrowserRouter>
     )
-
-    /*return (
-        <BrowserRouter>
-            <div className='app-wrapper'>
-                <Header/>
-                <Navbar/>
-                <div className='app-wrapper-content'>
-                    <Routes>
-                        <Route path='/profile' element={<Profile store = {props.store} />}/>
-                        <Route path='/dialogs/!*' element={<DialogsContainer store={props.store}/>}/>
-                    </Routes>
-                </div>
-            </div>
-        </BrowserRouter>
-    )*/
-
 }
 
 export default App;
