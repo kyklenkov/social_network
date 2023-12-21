@@ -4,6 +4,7 @@ import {connect} from "react-redux";
 import {getUserProfile} from "../Redux/Profile-Reducer";
 import {useEffect} from "react";
 import {Navigate, useNavigate, useParams} from "react-router-dom";
+import {withAuthRedirect} from "../../hoc/withAuthRedirect";
 
 
 function ProfileContainer(props) {
@@ -16,8 +17,6 @@ function ProfileContainer(props) {
         props.getUserProfile(userId);
     }, [userId]);
 
-    if (!props.isAuth) return <Navigate to={'/login'} />;
-
     return (
         <div>
             <Profile profile={props.profile} />
@@ -25,9 +24,10 @@ function ProfileContainer(props) {
     );
 }
 
+let AuthRedirectComponent = withAuthRedirect(ProfileContainer);
+
 let mapStateToProps = (state) => ({
-    profile: state.profilePage.profile,
-    isAuth: state.auth.isAuth
+    profile: state.profilePage.profile
 })
 
-export default connect(mapStateToProps, {getUserProfile})(ProfileContainer);
+export default connect(mapStateToProps, {getUserProfile})(AuthRedirectComponent);
