@@ -34,11 +34,3 @@ export default compose(
     withAuthRedirect
 )(ProfileContainer);
 
-
-/*
-let AuthRedirectComponent = withAuthRedirect(ProfileContainer);*/
-
-
-/*
-
-export default connect(mapStateToProps, {getUserProfile})(AuthRedirectComponent);*/
