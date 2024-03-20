@@ -12,9 +12,13 @@ function ProfileContainer(props) {
     let {userId} = useParams();
     if (!userId) {
         userId = props.authorizedUserId;
+        /*if (!userId) {
+            props.history.replace('/login');
+        }*/
     };
 
     useEffect(() => {
+
         props.getUserProfile(userId);
         props.getStatus(userId)
     }, [userId]);
@@ -38,6 +42,6 @@ let mapStateToProps = (state) => ({
 
 export default compose(
     connect(mapStateToProps, {getUserProfile, getStatus, updateStatus}),
-    // withAuthRedirect
+    withAuthRedirect
 )(ProfileContainer);
 
