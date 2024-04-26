@@ -4,8 +4,6 @@ import userPhoto from '../../assets/images/user.jpg'
 import {NavLink} from 'react-router-dom'
 import axios from "axios";
 import {usersAPI} from "../../api/api";
-import Paginator from "../common/Paginator/Paginator";
-
 
 let User = ({user, followingProgress, unfollow, follow}) => {
     return (
