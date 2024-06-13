@@ -43,8 +43,7 @@ class App extends Component {
                     <Suspense>
                         <Routes>
                             <Route path='/profile/:userId?' //element={<ProfileContainer />}/>
-                                   element={<ProfileContainer/>}/>
-
+                                   element={<ProfileContainer/>} />
 
                             <Route path='/dialogs'
                                    element={<DialogsContainer/>}/>
@@ -65,7 +64,6 @@ class App extends Component {
 
 const mapStateToProps = (state) => ({
     initialized: state.app.initialized
-
 })
 
 let AppContainer = compose(
