@@ -6,7 +6,8 @@ const INITIALIZED_SUCCES = 'INITIALIZED_SUCCES';
 
 
 let initialState = {
-    initialized: false
+    initialized: false,
+    globalError: null
 }
 
 const appReducer = (state = initialState, action) => {

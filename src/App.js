@@ -2,7 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 // import Header from "./components/Header/Header";
 import Navbar from "./components/Navbar/Navbar";
-import {BrowserRouter, Route, Router, Routes} from "react-router-dom";
+import {BrowserRouter, Navigate, Route, Router, Routes} from "react-router-dom";
 // import DialogsContainer from "./components/Dialogs/DialogsContainer";
 
 import UsersContainer from "./components/Users/UsersContainer";
@@ -24,9 +24,17 @@ const DialogsContainer = React.lazy(() => import('./components/Dialogs/DialogsCo
 const ProfileContainer = React.lazy(() => import('./components/Profile/ProfileContainer'));
 
 class App extends Component {
-
+    catchAllUnhandledErrors = (reason, promise) => {
+        alert("Some Error Occurred");
+        // console.error(promiseRejectionEvent);
+}
     componentDidMount() {
         this.props.initializeApp();
+        window.addEventListener("unhandledrejection",  this.catchAllUnhandledErrors);
+    }
+
+    componentWillUnmount() {
+        window.removeEventListener("unhandledrejection",  this.catchAllUnhandledErrors);
     }
 
     render() {
@@ -42,6 +50,10 @@ class App extends Component {
                 <div className='app-wrapper-content'>
                     <Suspense>
                         <Routes>
+
+                            <Route path='/' //element={<ProfileContainer />}/>
+                                   element={<Navigate to="/profile"/>} />
+
                             <Route path='/profile/:userId?' //element={<ProfileContainer />}/>
                                    element={<ProfileContainer/>} />
 
@@ -53,6 +65,10 @@ class App extends Component {
 
                             <Route path='/login'
                                    element={<Login/>}/>
+
+                            <Route path='*'
+                                   element={<div>404 NOT FOUND</div>}/>
+
                         </Routes>
                     </Suspense>
                 </div>
